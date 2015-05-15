@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity implements OnClickListener{
     private DrawingView drawView;
-    private ImageButton currPaint, drawBtn, eraseBtn, newBtn, saveBtn;
+    private ImageButton currPaint, drawBtn, newBtn, saveBtn;
     private float smallBrush, mediumBrush, largeBrush;
 
     @Override
@@ -29,10 +29,6 @@ public class MainActivity extends ActionBarActivity implements OnClickListener{
         // Draw Button
         drawBtn = (ImageButton)findViewById(R.id.draw_btn);
         drawBtn.setOnClickListener(this);
-
-        // Erase Button
-        eraseBtn = (ImageButton)findViewById(R.id.erase_btn);
-        eraseBtn.setOnClickListener(this);
 
         // New Button
         newBtn = (ImageButton)findViewById(R.id.new_btn);
@@ -84,7 +80,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener{
     //method called by pallete in activity
     public void paintClicked(View view){
         //use chosen color
-        drawView.setErase(false);
+        //drawView.setErase(false);
         drawView.setBrushSize(drawView.getLastBrushSize());
         // check that the user has clicked a paint color that is not the currently selected one:
         if(view!=currPaint){
@@ -114,7 +110,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener{
                 public void onClick(View v) {
                     drawView.setBrushSize(smallBrush);
                     drawView.setLastBrushSize(smallBrush);
-                    drawView.setErase(false);
+                    //drawView.setErase(false);
                     brushDialog.dismiss();
                 }
             });
@@ -125,7 +121,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener{
                 public void onClick(View v) {
                     drawView.setBrushSize(mediumBrush);
                     drawView.setLastBrushSize(mediumBrush);
-                    drawView.setErase(false);
+                    //drawView.setErase(false);
                     brushDialog.dismiss();
                 }
             });
@@ -136,41 +132,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener{
                 public void onClick(View v) {
                     drawView.setBrushSize(largeBrush);
                     drawView.setLastBrushSize(largeBrush);
-                    drawView.setErase(false);
-                    brushDialog.dismiss();
-                }
-            });
-            brushDialog.show();
-        }
-        else if(view.getId()==R.id.erase_btn){
-            //switch to erase - choose size
-            final Dialog brushDialog = new Dialog(this);
-            brushDialog.setTitle("Eraser size:");
-            brushDialog.setContentView(R.layout.brush_chooser);
-            ImageButton smallBtn = (ImageButton)brushDialog.findViewById(R.id.small_brush);
-            smallBtn.setOnClickListener(new OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    drawView.setErase(true);
-                    drawView.setBrushSize(smallBrush);
-                    brushDialog.dismiss();
-                }
-            });
-            ImageButton mediumBtn = (ImageButton)brushDialog.findViewById(R.id.medium_brush);
-            mediumBtn.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    drawView.setErase(true);
-                    drawView.setBrushSize(mediumBrush);
-                    brushDialog.dismiss();
-                }
-            });
-            ImageButton largeBtn = (ImageButton)brushDialog.findViewById(R.id.large_brush);
-            largeBtn.setOnClickListener(new OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    drawView.setErase(true);
-                    drawView.setBrushSize(largeBrush);
+                    //drawView.setErase(false);
                     brushDialog.dismiss();
                 }
             });

@@ -20,18 +20,13 @@ public class DrawingView extends View{
     //drawing and canvas paint
     private Paint drawPaint, canvasPaint;
     //initial color
-    private int paintColor = 0xFF660000;
+    private int paintColor = 0xFF000000;
     //canvas
     private Canvas drawCanvas;
     //canvas bitmap
     private Bitmap canvasBitmap;
-
     //brush
     private float brushSize, lastBrushSize;
-
-    //eraser
-    private boolean erase = false;
-
 
     public DrawingView(Context context, AttributeSet attrs){
         super(context, attrs);
@@ -121,15 +116,6 @@ public class DrawingView extends View{
 
     public float getLastBrushSize(){
         return lastBrushSize;
-    }
-
-    public void setErase(boolean isErase){
-        //set erase true or false
-        erase=isErase;
-        if(erase)
-            drawPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-        else
-            drawPaint.setXfermode(null);
     }
 
     public void startNew(){
